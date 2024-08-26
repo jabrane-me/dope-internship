@@ -1,0 +1,76 @@
+topic_camera: "/dope/webcam/image_raw"
+topic_camera_info: "/dope/webcam/camera_info"
+topic_publishing: "dope"
+input_is_rectified: True   # Whether the input image is rectified (strongly suggested!)
+downscale_height: 400      # if the input image is larger than this, scale it down to this pixel height
+
+weights: {
+  'brick_duplo_2x4_bleu' : "package://dope/weights/net_epoch_300.pth",
+  'brick_duplo_2x4_jaune': "package://dope/weights/net_epoch_325_y.pth",
+  'brick_duplo_2x4_rouge': "package://dope/weights/net_epoch_325_r.pth",
+  'brick_duplo_2x4_vert' : "package://dope/weights/net_epoch_325_g.pth"
+}
+
+dimensions: {
+  "brick_duplo_2x4_bleu": [3.12, 2.39, 6.37],
+  "brick_duplo_2x4_jaune": [3.12, 2.39, 6.37],
+  "brick_duplo_2x4_rouge": [3.12, 2.39, 6.37],
+  "brick_duplo_2x4_vert": [3.12, 2.39, 6.37]
+}
+
+# dimensions: {
+#   "brick_duplo_2x4_bleu": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+#   "brick_duplo_2x4_jaune": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+#   "brick_duplo_2x4_rouge": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+#   "brick_duplo_2x4_vert": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+# }
+
+class_ids: {
+    "brick_duplo_2x4_bleu": 1,
+    "brick_duplo_2x4_jaune": 2,
+    "brick_duplo_2x4_rouge": 3,
+    "brick_duplo_2x4_vert": 4,
+}
+
+draw_colors: {
+    "brick_duplo_2x4_bleu": [255, 165, 0],   # Orange
+    "brick_duplo_2x4_jaune": [75, 0, 130],  # Indigo
+    "brick_duplo_2x4_rouge": [0, 255, 255], # Cyan
+    "brick_duplo_2x4_vert": [255, 20, 147], # Deep Pink
+}
+
+
+
+# optional: provide a transform that is applied to the pose returned by DOPE
+model_transforms: {
+#    "cracker": [[ 0,  0,  1,  0],
+#                [ 0, -1,  0,  0],
+#                [ 1,  0,  0,  0],
+#                [ 0,  0,  0,  1]]
+}
+
+# optional: if you provide a mesh of the object here, a mesh marker will be
+# published for visualization in RViz
+# You can use the nvdu_ycb tool to download the meshes: https://github.com/NVIDIA/Dataset_Utilities#nvdu_ycb
+meshes: {
+    # "brick_duplo_2x4_bleu": "file:~/catkin_ws/src/dope/models/brick_duplo_2x4_bleu/google_16k/textured.obj",
+    # "brick_duplo_2x4_jaune": "file:~/catkin_ws/src/dope/models/brick_duplo_2x4_jaune/google_16k/textured.obj",
+    # "brick_duplo_2x4_rouge": "file:~/catkin_ws/src/dope/models/brick_duplo_2x4_rouge/google_16k/textured.obj",
+    # "brick_duplo_2x4_vert": "file:~/catkin_ws/src/dope/models/brick_duplo_2x4_vert/google_16k/textured.obj",
+}
+
+# optional: If the specified meshes are not in meters, provide a scale here (e.g. if the mesh is in centimeters, scale should be 0.01). default scale: 1.0.
+mesh_scales: {
+  "brick_duplo_2x4_bleu": 0.01,
+  "brick_duplo_2x4_jaune": 0.01,
+  "brick_duplo_2x4_rouge": 0.01,
+  "brick_duplo_2x4_vert": 0.01,
+}
+
+overlay_belief_images: True   # Whether to overlay the input image on the belief images published on /dope/belief_[obj_name]
+
+# Config params for DOPE
+thresh_angle: 0.5
+thresh_map: 0.01
+sigma: 3
+thresh_points: 0.1

@@ -1,0 +1,50 @@
+input_is_rectified: True
+downscale_height: 540
+
+weights: {
+  # 'brick_duplo_2x4_jaune': "../train/output2/brick_duplo_2x4_jaune/weights/net_epoch_200.pth",
+  # 'brick_duplo_2x4_rouge': "../train/output2/brick_duplo_2x4_rouge/weights/net_epoch_230.pth",
+  'brick_duplo_2x4_bleu': "../train/output2/brick_duplo_2x4_bleu/weights/net_epoch_300.pth",
+  # 'brick_duplo_2x4_vert': "../train/output2/brick_duplo_2x4_vert/weights/net_epoch_250.pth"  
+}
+
+architectures: {
+  'brick_duplo_2x4_jaune': 'dope',
+  'brick_duplo_2x4_rouge': 'dope',
+  'brick_duplo_2x4_bleu': 'dope',
+  'brick_duplo_2x4_vert': 'dope',
+
+}
+
+dimensions: {
+  "brick_duplo_2x4_bleu": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+  "brick_duplo_2x4_jaune": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+  "brick_duplo_2x4_rouge": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+  "brick_duplo_2x4_vert": [0.031199999153614044, 0.023850001394748688, 0.06369999796152115],
+}
+
+class_ids: {
+    "brick_duplo_2x4_bleu": 16,
+    "brick_duplo_2x4_jaune": 17,
+    "brick_duplo_2x4_rouge": 18,
+    "brick_duplo_2x4_vert": 19,
+}
+
+draw_colors: {
+  "brick_duplo_2x4_bleu": [255, 255, 0],
+  "brick_duplo_2x4_jaune": [255, 0, 255],
+  "brick_duplo_2x4_rouge": [0, 255, 255],
+  "brick_duplo_2x4_vert": [128, 128, 128],
+}
+
+mesh_scales: {
+  "brick_duplo_2x4_bleu": 0.01,
+  "brick_duplo_2x4_jaune": 0.01,
+  "brick_duplo_2x4_rouge": 0.01,
+  "brick_duplo_2x4_vert": 0.01,
+}
+
+thresh_angle: 0.5
+thresh_map: 0.0001
+sigma: 3
+thresh_points: 0.1
